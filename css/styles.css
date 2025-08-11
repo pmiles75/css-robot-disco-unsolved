@@ -3,39 +3,259 @@ body {
 }
 
 /* 👇👇👇 Paste the styles of your Fancy Robot from the "Position it right" assignment here 👇👇👇 */
-
 .robot-container {
+  width: 820px;
+  height: 845px;
+  top: 100px;
+  border: 2px solid black;
+  margin: 60px auto;
+  background: #333;
+  display: block;
+  position: relative;
 }
 
 .robot-face-shape {
+  width: 700px;
+  height: 700px;
+  background: rgb(0 0 0 / 50%);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
 }
 
 .robot-eye-left {
+  width: 150px;
+  height: 75px;
+  border: 2px solid white;
+  background: url(https://picsum.photos/seed/picsum/200/300);
+  background-size: 400% 100%;
+  background-position: center;
+  border-radius: 50%;
+  position: relative;
+  left: 150px;
+  top: 175px;
+  z-index: 10;
+  display: inline-block;
+  animation: image-animation 10s ease-in-out infinite;
 }
-
 .robot-eye-right {
+  width: 150px;
+  height: 75px;
+  border: 2px solid white;
+  background-image: radial-gradient(circle, rgb(187, 30, 30), white);
+  background-size: 300% 100%;
+  border-radius: 50%;
+  position: relative;
+  margin-left: 240px;
+  top: 175px;
+  z-index: 10;
+  display: inline-block;
+  animation: gradient-animation 10s ease infinite;
 }
 
 .robot-ear-left {
+  width: 75px;
+  height: 200px;
+  border: 2px solid white;
+  background: #00b33c;
+  border-radius: 50% 0 0 50%;
+  position: absolute;
+  left: 0;
+  top: 300px;
+  z-index: 10;
+  animation: flyInFromLeft 3s ease-out forwards;
 }
 
 .robot-ear-right {
+  width: 75px;
+  height: 200px;
+  border: 2px solid white;
+  background: #8b008b;
+  border-radius: 0 50% 50% 0;
+  position: absolute;
+  right: 0;
+  top: 300px;
+  z-index: 10;
+  animation: flyInFromRight 3s ease-out forwards;
 }
 
 .robot-nose {
-}
-
-.robot-nose:before {
-}
-
-.robot-nose:after {
+  width: 100px;
+  height: 100px;
+  border: 2px solid white;
+  background: linear-gradient(to bottom, #99ffcc 0%, #0066ff 100%);
+  clip-path: polygon(
+    50% 0%,
+    100% 100%,
+    0% 100%
+  ); /* Defines the triangle shape */
+  border-radius: 15px; /* Applies rounded corners to the clipped shape */
+  transition: background-color 0.5s ease-in-out, transform 0.5s ease-in-out; /* Apply transition to both properties */
+  transform: rotate(0deg); /* Initial rotation */
+  position: relative;
+  margin: 0 auto;
+  top: 200px;
+  display: block;
+  z-index: 3;
 }
 
 .robot-teeth {
+  height: 155px;
+  aspect-ratio: 3/2;
+  clip-path: ellipse(85% 100% at 50% 0);
+  background: rgb(200, 21, 21);
+  position: relative;
+  margin: 0 auto;
+  top: 225px;
+  display: block;
+  z-index: 3;
+  text-align: center;
+  animation: mouthAnimation 4s infinite alternate;
 }
 
 .robot-tooth {
+  width: 45px;
+  height: 50px;
+  background: white;
+  border: 2px solid solid;
+  position: relative;
+  display: inline-block;
+  margin: 5px 3px;
+  top: 5px;
+  /* z-index: 2; */
 }
 
 .robot-hair-style {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  top: 25px;
+  left: 0;
+  z-index: 15;
+  display: inline-block;
+  border: solid silver;
+}
+
+.robot-hair-one {
+  width: 60px;
+  height: 30px;
+  border: 2px solid white;
+  background: #554ca8;
+  border-radius: 50% 50% 0 0;
+  position: absolute;
+  left: 300px;
+  top: 40px;
+  z-index: 16;
+  animation: growHair 3s ease-in forwards;
+}
+
+.robot-hair-two {
+  width: 60px;
+  height: 80px;
+  border: 2px solid white;
+  background: #8fb22e;
+  border-radius: 50% 50% 0 0;
+  position: absolute;
+  left: 375px;
+  top: -5px;
+  z-index: 17;
+  animation: growHair 3s ease-in forwards;
+}
+
+.robot-hair-three {
+  width: 60px;
+  height: 30px;
+  border: 2px solid white;
+  background: #a26d38;
+  border-radius: 50% 50% 0 0;
+  position: absolute;
+  right: 307px;
+  top: 38px;
+  z-index: 16;
+  animation: growHair 3s ease-in forwards;
+}
+/* Animation rules */
+
+@keyframes flyInFromLeft {
+  0% {
+    transform: translateX(-700%); /* Start off-screen to the left */
+    opacity: 0; /* Start invisible */
+  }
+  100% {
+    transform: translateX(0); /* End at its original position */
+    opacity: 1; /* End fully visible */
+    background-color: darkgoldenrod;
+  }
+}
+
+@keyframes flyInFromRight {
+  0% {
+    transform: translateX(700%); /* Start off-screen to the left */
+    opacity: 0; /* Start invisible */
+  }
+  100% {
+    transform: translateX(0); /* End at its original position */
+    opacity: 1; /* End fully visible */
+    background-color: blue;
+  }
+}
+@keyframes growHair {
+  0% {
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes mouthAnimation {
+  0% {
+    height: 155px;
+    transform: translateY(0);
+  }
+  50% {
+    height: 10px;
+    transform: translateY(10px);
+  }
+  100% {
+    height: 155px;
+    transform: translateY(0);
+  }
+}
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%; /* Start position */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+  50% {
+    background-position: 100% 50%; /* Middle position */
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.8), 0 0 50px rgba(0, 255, 255, 0.4);
+  }
+  100% {
+    background-position: 0% 50%; /* Return to start for loop */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+}
+
+@keyframes image-animation {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    background-position: 0% 50%; /* Start position */
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.8), 0 0 50px rgba(0, 255, 255, 0.4);
+    background-position: 100% 50%; /* Middle position */
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    background-position: 0% 50%; /* Return to start for loop */
+  }
+}
+.robot-nose:hover {
+  background: linear-gradient(to bottom, #1abb6b 0%, #ffc400 100%);
+  transform: rotate(360deg);
 }
